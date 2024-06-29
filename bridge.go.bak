@@ -1,0 +1,13 @@
+// package main
+
+// import "fmt"
+
+// // #cgo CFLAGS: -I.
+// // #cgo LDFLAGS: -L. -lzgo
+// // #include ❬zgo.h❭
+// import "C"
+
+// func callZig() {
+// 	fmt.Printf("Invoking zig library!\n")
+// 	fmt.Println("Done ", C.x(10))
+// }
