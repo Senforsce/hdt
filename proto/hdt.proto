@@ -1,0 +1,27 @@
+service HDTRPC {
+    rpc GetResultsFile(Query) returns (TripleResponse) {}
+    rpc GetResultsFileAsStream(Query) returns (stream TripleResponse) {}
+    rpc GenerateSchemeFromDirectory(FilePath) returns (FileCreatedResponse) {}
+    rpc SyncOnceWithStore(StoreConfig, FileConfig) returns (stream SyncResponse) {}
+    rpc SyncOnceFilesWithWebWorker(FileConfig, WorkerConfig) returns (stream SyncResponse) {}
+    rpc SyncOnceWorkerWithStore(WorkerConfig, StoreConfig) returns (stream SyncResponse) {}
+    rpc ListenToSync(stream SyncResponse) returns (SyncSummary) {}
+    rpc SyncWithStore(stream FileStream, stream StoreStream) returns (stream SyncResponse) {}
+    rpc SyncFilesWithWebWorker(stream FileStream, stream WorkerStream) returns (stream SyncResponse) {}
+    rpc SyncWorkerWithStore(stream WorkerStream, stream StoreStream) returns (stream SyncResponse) {}
+}
+
+message Triple {
+    int32 subject = 1;
+    int32 predicate = 2;
+    int32 object = 3;
+}
+
+message Query {
+    int32 q = 1;
+}
+
+message TripleResponse {
+    int32 success = 1;
+    int32 payload = 2;
+}
